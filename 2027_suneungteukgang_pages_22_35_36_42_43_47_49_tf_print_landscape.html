@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2027 수능특강 영어 TF 프린트</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+    @page {
+      size: A4 landscape;
+      margin: 10mm;
+    }
+
+    :root {
+      --bg: #eef2f7;
+      --paper: #ffffff;
+      --line: #d8e0ea;
+      --text: #1a2230;
+      --muted: #667085;
+      --accent: #2f6fe4;
+      --accent-soft: #eaf1ff;
+      --accent-deep: #1949aa;
+      --chip: #f3f6fb;
+      --point-bg: #fff8e7;
+      --point-line: #f1d089;
+      --shadow: 0 8px 24px rgba(28, 44, 75, 0.08);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      padding: 20px 0 40px;
+    }
+
+    .screen-toolbar {
+      width: min(1120px, calc(100% - 28px));
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 22px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #2f6fe4, #5b7cff);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .screen-toolbar h1 {
+      margin: 0 0 4px;
+      font-size: 22px;
+      line-height: 1.15;
+    }
+
+    .screen-toolbar p {
+      margin: 0;
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    .screen-toolbar button {
+      border: 0;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--accent-deep);
+      padding: 11px 20px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(18, 31, 58, 0.18);
+    }
+
+    .stack {
+      display: grid;
+      gap: 18px;
+      width: min(1120px, calc(100% - 28px));
+      margin: 0 auto;
+    }
+
+    .sheet {
+      width: 277mm;
+      min-height: 190mm;
+      margin: 0 auto;
+      padding: 9mm 10mm 8mm;
+      background: var(--paper);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 6mm;
+      page-break-after: always;
+      break-after: page;
+    }
+
+    .sheet:last-child {
+      page-break-after: auto;
+      break-after: auto;
+    }
+
+    .sheet-header {
+      padding-bottom: 4mm;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .sheet-topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3mm;
+    }
+
+    .sheet-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 20mm;
+      padding: 1.5mm 4mm;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      font-size: 10pt;
+      font-weight: 800;
+    }
+
+    .sheet-page {
+      color: var(--muted);
+      font-size: 9pt;
+      font-weight: 600;
+    }
+
+    .sheet-header h2 {
+      margin: 0 0 2mm;
+      font-size: 16pt;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+
+    .sheet-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 9.5pt;
+    }
+
+    .sheet-grid {
+      display: grid;
+      grid-template-columns: 43% 57%;
+      gap: 6mm;
+      min-height: 0;
+    }
+
+    .passage-panel, .quiz-panel {
+      min-height: 0;
+    }
+
+    .panel-label {
+      display: inline-flex;
+      align-items: center;
+      padding: 1.4mm 3.4mm;
+      border-radius: 999px;
+      background: var(--chip);
+      color: var(--accent-deep);
+      font-size: 8.5pt;
+      font-weight: 800;
+      margin-bottom: 3mm;
+    }
+
+    .panel-label.english {
+      background: #eef8f3;
+      color: #1c7a50;
+    }
+
+    .passage-panel {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 0;
+    }
+
+    .passage-text {
+      white-space: pre-wrap;
+      word-break: keep-all;
+      font-size: 10.1pt;
+      line-height: 1.55;
+      color: #202938;
+      padding: 4mm 4.5mm;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: linear-gradient(180deg, #fbfcfe, #f7f9fc);
+    }
+
+    .point-box {
+      margin-top: 4mm;
+      padding: 3.6mm 4mm;
+      border-radius: 14px;
+      border: 1px solid var(--point-line);
+      background: var(--point-bg);
+    }
+
+    .point-title {
+      font-size: 8.7pt;
+      font-weight: 800;
+      color: #8a5a00;
+      margin-bottom: 1.8mm;
+    }
+
+    .point-box ul {
+      margin: 0;
+      padding-left: 4.5mm;
+    }
+
+    .point-box li {
+      font-size: 8.5pt;
+      line-height: 1.42;
+      margin-bottom: 1.2mm;
+    }
+
+    .quiz-panel {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 4mm;
+      min-height: 0;
+    }
+
+    .quiz-section {
+      min-height: 0;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    .q-list {
+      display: grid;
+      gap: 2.2mm;
+    }
+
+    .q-item {
+      display: grid;
+      grid-template-columns: 7mm 1fr;
+      gap: 2.4mm;
+      align-items: start;
+      padding: 2.5mm 2.8mm;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fcfdff;
+    }
+
+    .q-num {
+      width: 7mm;
+      height: 7mm;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      font-size: 8.4pt;
+      font-weight: 800;
+      line-height: 1;
+      margin-top: 0.4mm;
+    }
+
+    .q-main {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3mm;
+      align-items: start;
+    }
+
+    .q-text {
+      font-size: 8.9pt;
+      line-height: 1.4;
+      color: #243041;
+      word-break: keep-all;
+    }
+
+    .tf-marks {
+      display: flex;
+      gap: 1.8mm;
+      padding-top: 0.2mm;
+      flex-shrink: 0;
+    }
+
+    .tf-mark {
+      width: 6mm;
+      height: 6mm;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.4px solid #96a4bc;
+      border-radius: 50%;
+      font-size: 7.8pt;
+      font-weight: 800;
+      color: #5b6b83;
+      background: #fff;
+    }
+
+    @media print {
+      html, body {
+        background: #fff;
+      }
+
+      body {
+        padding: 0;
+      }
+
+      .screen-toolbar {
+        display: none;
+      }
+
+      .stack {
+        width: auto;
+        margin: 0;
+        gap: 0;
+      }
+
+      .sheet {
+        width: auto;
+        min-height: auto;
+        margin: 0;
+        padding: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="screen-toolbar">
+    <div>
+      <h1>2027 수능특강 영어 TF 프린트</h1>
+      <p>A4 가로 인쇄용 · 왼쪽 지문 / 오른쪽 T·F 문항</p>
+    </div>
+    <button type="button" onclick="window.print()">인쇄하기</button>
+  </div>
+
+  <main class="stack">
+    
+    <section class="sheet">
+      <div class="sheet-header">
+        <div class="sheet-topline">
+          <span class="sheet-badge">22p</span>
+          <span class="sheet-page">1 / 7</span>
+        </div>
+        <h2>함축 · 밑줄 친 &quot;cheated God&quot;이 다음 글에서 의미하는 바로 가장 적절한 것은?</h2>
+        <p>페이지 22 · 26005-0012 · 밑줄 의미</p>
+      </div>
+
+      <div class="sheet-grid">
+        <article class="passage-panel">
+          <div class="panel-label">Passage</div>
+          <div class="passage-text">Even outdoors, although climate (including temperature) is usually regarded as beyond the control of man, localized temperature control is sometimes effective on a microclimate scale. Vancouver, Canada, is a few miles north of the 49th parallel, about 60 miles farther north than Minot, North Dakota, with its legendary harsh winter temperatures. But constant foehn winds off the Pacific Ocean make Vancouver winters mild and wet, although sunshine is scant. When I had a garden there in the late 1940s, a neighbor used to say that I &quot;cheated God&quot; to bring in my lettuce and tomatoes earlier than anyone else. The bed in which the vegetables grew was banked toward the south at approximately 50 degrees, and the area between the plants was covered with flat stones, gathered from the nearby beach, to maximize soil heating from the weak late winter-early spring sun.</div>
+
+          <div class="point-box">
+            <div class="point-title">출제 포인트</div>
+            <ul><li>한국어 절반은 푄 바람, 위도, 남향 경사, 돌 같은 구체 정보를 정확히 추적하게 했다.</li><li>영어 문항은 거시 기후와 미기후의 수사적 대조(Contrast) 구조와 학술적 어휘(feasibility, subject to)를 활용하여 수능 난이도로 구성했다.</li><li>오답 선지는 &#x27;강화한다(reinforce)&#x27;, &#x27;결정한다(determines)&#x27; 등 인과 관계를 역전시키는 평가원식 함정 패턴을 적용했다.</li></ul>
+          </div>
+        </article>
+
+        <article class="quiz-panel">
+          <div class="quiz-section">
+            <div class="panel-label">한국어 문항 1–7</div>
+            <div class="q-list"><div class="q-item">  <div class="q-num">1</div>  <div class="q-main">    <div class="q-text">글은 야외 기후가 대체로 인간의 통제 밖에 있다고 전제한다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">2</div>  <div class="q-main">    <div class="q-text">필자는 미기후 수준에서는 국지적인 온도 조절이 효과를 낼 수 있다고 본다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">3</div>  <div class="q-main">    <div class="q-text">밴쿠버는 마이놋보다 남쪽에 있기 때문에 겨울이 더 온화하다고 설명된다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">4</div>  <div class="q-main">    <div class="q-text">태평양에서 불어오는 푄 바람은 밴쿠버의 겨울을 온화하고 습하게 만드는 요인으로 제시된다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">5</div>  <div class="q-main">    <div class="q-text">이웃이 말한 &quot;cheated God&quot;은 종교적 의식을 통해 수확 시기를 앞당겼다는 뜻이다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">6</div>  <div class="q-main">    <div class="q-text">채소밭을 남쪽으로 기울이고 돌을 깔아 약한 햇빛의 열을 더 잘 모으도록 했다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">7</div>  <div class="q-main">    <div class="q-text">밑줄 표현은 자연 조건을 영리하게 조정해 더 따뜻한 재배 환경을 만든 것을 가리킨다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div></div>
+          </div>
+
+          <div class="quiz-section">
+            <div class="panel-label english">English Items 8–14</div>
+            <div class="q-list"><div class="q-item">  <div class="q-num">8</div>  <div class="q-main">    <div class="q-text">The passage suggests that while large-scale climates are unaffected by human intervention, localized micro-environments remain subject to strategic manipulation.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">9</div>  <div class="q-main">    <div class="q-text">By contrasting Vancouver and Minot, the author reinforces the conventional assumption that geographic latitude inevitably determines the severity of winter climates.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">10</div>  <div class="q-main">    <div class="q-text">The gardener&#x27;s method reflects an attempt to work with available environmental factors rather than deny natural limits.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">11</div>  <div class="q-main">    <div class="q-text">The phrase &quot;cheated God&quot; is used to criticize the speaker for relying on industrial technology instead of sunlight.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">12</div>  <div class="q-main">    <div class="q-text">The example indicates that small design choices can reshape how effectively weak natural resources are used.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">13</div>  <div class="q-main">    <div class="q-text">The core argument highlights the contrast between the impossibility of controlling the macro-climate and the practical feasibility of shaping a micro-environment.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">14</div>  <div class="q-main">    <div class="q-text">The anecdote implies that successful gardening here required ignoring the role of sunlight altogether.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div></div>
+          </div>
+        </article>
+      </div>
+    </section>
+    
+
+    <section class="sheet">
+      <div class="sheet-header">
+        <div class="sheet-topline">
+          <span class="sheet-badge">35p</span>
+          <span class="sheet-page">2 / 7</span>
+        </div>
+        <h2>주장 · 다음 글에서 필자가 주장하는 바로 가장 적절한 것은?</h2>
+        <p>페이지 35 · 26005-0023 · 주장</p>
+      </div>
+
+      <div class="sheet-grid">
+        <article class="passage-panel">
+          <div class="panel-label">Passage</div>
+          <div class="passage-text">Consumer surveys indicate that the majority of Americans (91%) believe they have some control over their health, and 72% believe that food and nutrition play the greatest role. However, 75% of consumers rely on media outlets including the Internet as their major sources of health and nutrition information, and only half use medical sources. A Google search for &quot;nutrition listservs&quot; yielded over 100,000 sites, but it is likely that many of these writings are not reviewed by nutrition experts. Internet sites marketing herbs, drugs, and health devices are not monitored by government regulatory agencies and often contain misleading information. Reputable food companies provide helpful facts about the nutrient content of their products, but commercial sites devoted to sales often post misleading health claims. Internet sites maintained by government agencies, universities, state extension services, and medical facilities provide evidence-based information and should be the first source for public information on foods, nutrition, and health.</div>
+
+          <div class="point-box">
+            <div class="point-title">출제 포인트</div>
+            <ul><li>한국어 절반은 통계, 출처, 감독 여부, 결론 문장을 따라가게 했다.</li><li>영어 문항은 극단적 단어(completely rejects, all, only absolute way)를 사용하여 예외를 무시하게 만드는 전형적인 오답 설계법을 취했다.</li></ul>
+          </div>
+        </article>
+
+        <article class="quiz-panel">
+          <div class="quiz-section">
+            <div class="panel-label">한국어 문항 1–7</div>
+            <div class="q-list"><div class="q-item">  <div class="q-num">1</div>  <div class="q-main">    <div class="q-text">미국 소비자 다수는 자신의 건강을 어느 정도 스스로 통제할 수 있다고 믿는다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">2</div>  <div class="q-main">    <div class="q-text">소비자들은 건강·영양 정보의 주요 출처로 의료 기관을 가장 많이 이용한다고 한다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">3</div>  <div class="q-main">    <div class="q-text">검색 결과가 많다고 해서 그 정보가 영양 전문가의 검토를 거친 것은 아닐 수 있다고 본다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">4</div>  <div class="q-main">    <div class="q-text">허브나 건강 기기를 파는 인터넷 사이트는 정부 규제 기관의 감독을 받지 않는 경우가 있다고 지적한다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">5</div>  <div class="q-main">    <div class="q-text">글은 판매 목적의 상업 사이트가 대체로 신뢰할 만한 건강 정보를 제공한다고 평가한다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">6</div>  <div class="q-main">    <div class="q-text">정부 기관이나 대학, 의료 시설이 운영하는 사이트는 근거 기반 정보를 제공하는 출처로 제시된다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">7</div>  <div class="q-main">    <div class="q-text">필자는 식품, 영양, 건강 정보는 공신력 있는 전문 기관 사이트를 우선 참고해야 한다고 본다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div></div>
+          </div>
+
+          <div class="quiz-section">
+            <div class="panel-label english">English Items 8–14</div>
+            <div class="q-list"><div class="q-item">  <div class="q-num">8</div>  <div class="q-main">    <div class="q-text">The author implies that the vast abundance of online health information does not guarantee its factual accuracy, thereby posing a risk to uncritical consumers.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">9</div>  <div class="q-main">    <div class="q-text">The argument implies that commercial motivation can distort health claims rather than ensure objectivity.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">10</div>  <div class="q-main">    <div class="q-text">The passage completely rejects all nutritional data provided by commercial entities, equating corporate motives directly with deliberate misinformation.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">11</div>  <div class="q-main">    <div class="q-text">The contrast between media reliance and expert-reviewed sources indicates a gap between consumer behavior and reliable guidance.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">12</div>  <div class="q-main">    <div class="q-text">The author ultimately concludes that enforcing strict governmental regulations on commercial websites is the only absolute way to eliminate online nutritional misinformation.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">13</div>  <div class="q-main">    <div class="q-text">The recommended first source is determined by evidence-based oversight rather than by sheer popularity.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">14</div>  <div class="q-main">    <div class="q-text">The overall claim reflects confidence that most Internet health writings are reviewed by nutrition experts before publication.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div></div>
+          </div>
+        </article>
+      </div>
+    </section>
+    
+
+    <section class="sheet">
+      <div class="sheet-header">
+        <div class="sheet-topline">
+          <span class="sheet-badge">36p</span>
+          <span class="sheet-page">3 / 7</span>
+        </div>
+        <h2>주장 · 다음 글에서 필자가 주장하는 바로 가장 적절한 것은?</h2>
+        <p>페이지 36 · 26005-0024 · 주장</p>
+      </div>
+
+      <div class="sheet-grid">
+        <article class="passage-panel">
+          <div class="panel-label">Passage</div>
+          <div class="passage-text">My business partner Charles and I embraced the servant leader&#x27;s way of doing things. In other words, nothing was beneath us. We led by example and did the work. When any new salesman came into the store, he would look around, notice Charles polishing some corner of the floor and me covered in flour, and assume the decision-maker was not present. He&#x27;d then hand off whatever he was selling to me and say, &#x27;Can you give this to the owner?&#x27; Now, if Charles and I had remained in the bakery for too long, we wouldn&#x27;t have been able to grow and scale, so I&#x27;m not saying you should be sweeping the floors forever. It&#x27;s more about modeling what&#x27;s important. If cleanliness and details are important, be sure you aren&#x27;t above doing the work and pitching in. Come into your workspace and ask how you can help. If it&#x27;s clear your team is in the weeds, jump in without asking.</div>
+
+          <div class="point-box">
+            <div class="point-title">출제 포인트</div>
+            <ul><li>한국어 절반은 nothing was beneath us, led by example, not forever, jump in 같은 표면 근거를 촘촘히 물었다.</li><li>영어 문항은 일화를 일반화(Generalization)하거나, 글의 태도와 정반대의 가치관(Reversal)을 정답처럼 포장해 독해의 깊이를 평가했다.</li></ul>
+          </div>
+        </article>
+
+        <article class="quiz-panel">
+          <div class="quiz-section">
+            <div class="panel-label">한국어 문항 1–7</div>
+            <div class="q-list"><div class="q-item">  <div class="q-num">1</div>  <div class="q-main">    <div class="q-text">필자와 Charles는 servant leader의 방식으로 일했다고 말한다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">2</div>  <div class="q-main">    <div class="q-text">그들은 중요한 일을 아래 직원에게만 맡기고 스스로는 지시만 하는 편이었다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">3</div>  <div class="q-main">    <div class="q-text">새 영업사원은 두 사람이 현장 일을 하고 있는 모습을 보고 주인이 없다고 착각하곤 했다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">4</div>  <div class="q-main">    <div class="q-text">필자는 리더가 회사 성장을 위해 계속 바닥 청소만 해야 한다고 주장한다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">5</div>  <div class="q-main">    <div class="q-text">글은 리더가 중요하다고 말하는 가치라면 직접 몸으로 보여 주어야 한다는 입장이다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">6</div>  <div class="q-main">    <div class="q-text">팀이 어려움에 빠져 있는 것이 보이면 먼저 묻지 말고 바로 도우라고 조언한다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">7</div>  <div class="q-main">    <div class="q-text">결국 필자의 초점은 리더가 권위를 지키기 위해 현장과 거리를 두어야 한다는 데 있다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div></div>
+          </div>
+
+          <div class="quiz-section">
+            <div class="panel-label english">English Items 8–14</div>
+            <div class="q-list"><div class="q-item">  <div class="q-num">8</div>  <div class="q-main">    <div class="q-text">The story illustrates that a leader’s active participation in basic, hands-on tasks serves as a powerful demonstration of their core values and priorities.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">9</div>  <div class="q-main">    <div class="q-text">The anecdote implies that appearing uninvolved is an effective way to signal authority to newcomers.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">10</div>  <div class="q-main">    <div class="q-text">The author advocates for the continuous involvement of leaders in manual labor, presenting it as an absolute requirement for genuine leadership.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">11</div>  <div class="q-main">    <div class="q-text">The passage implicitly supports a hands-off management style, suggesting that maintaining an authoritative distance is better than stepping in during busy times.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">12</div>  <div class="q-main">    <div class="q-text">The argument indicates that helping behavior should be aligned with what a leader claims to value.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">13</div>  <div class="q-main">    <div class="q-text">The passage redefines leadership as service-oriented participation that should remain unchanged even when growth requires a shift in role.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">14</div>  <div class="q-main">    <div class="q-text">The closing advice suggests that support should wait for formal permission before it is offered.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div></div>
+          </div>
+        </article>
+      </div>
+    </section>
+    
+
+    <section class="sheet">
+      <div class="sheet-header">
+        <div class="sheet-topline">
+          <span class="sheet-badge">42p</span>
+          <span class="sheet-page">4 / 7</span>
+        </div>
+        <h2>주제 · 다음 글의 주제로 가장 적절한 것은?</h2>
+        <p>페이지 42 · 26005-0029 · 주제</p>
+      </div>
+
+      <div class="sheet-grid">
+        <article class="passage-panel">
+          <div class="panel-label">Passage</div>
+          <div class="passage-text">The reliance on the computer as a model for the operations of the human mind may well prove to be as limited as an earlier fascination with behaviorism. Psychologists have already begun to recognize the flaws of the mind-as-computer metaphor. Some have turned to cultural anthropology as a way of understanding the factors outside any particular individual&#x27;s brain that help the individual make sense out of the world. Others, such as Jerome Bruner, one of the founders of cognitive psychology, find that the computer analogy carries with it an unfortunate shift &quot;from the construction of meaning to the processing of information.&quot; Bruner&#x27;s reflections on the limits of the machine model lead him back to a humanistic emphasis on narrative and story-telling as essential ingredients in understanding human cognition, a fascinating intellectual journey that reveals both the power and the limits of computers as guides to the way we think.</div>
+
+          <div class="point-box">
+            <div class="point-title">출제 포인트</div>
+            <ul><li>한국어 절반은 limitation, flaws, cultural anthropology, Bruner의 직접 진술을 정확히 잡게 했다.</li><li>영어 문항은 &#x27;A without B 논리&#x27;, &#x27;패러다임의 전환 요약&#x27;, &#x27;잘못된 통합(False Synthesis) 함정&#x27;을 사용하여 구조적 파악 능력을 테스트했다.</li></ul>
+          </div>
+        </article>
+
+        <article class="quiz-panel">
+          <div class="quiz-section">
+            <div class="panel-label">한국어 문항 1–7</div>
+            <div class="q-list"><div class="q-item">  <div class="q-num">1</div>  <div class="q-main">    <div class="q-text">글은 인간 정신의 작동을 설명하는 컴퓨터 모델이 한계를 드러낼 수 있다고 본다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">2</div>  <div class="q-main">    <div class="q-text">심리학자들은 이미 mind-as-computer metaphor의 결함을 인식하기 시작했다고 한다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">3</div>  <div class="q-main">    <div class="q-text">문화인류학으로의 전환은 개인의 뇌 내부만 더 정밀하게 들여다보려는 시도로 제시된다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">4</div>  <div class="q-main">    <div class="q-text">브루너는 컴퓨터 비유가 의미 구성에서 정보 처리로 초점을 옮기는 불행한 전환을 낳는다고 본다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">5</div>  <div class="q-main">    <div class="q-text">글은 컴퓨터가 인간 인지를 이해하는 유일하고 충분한 길이라고 결론짓는다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">6</div>  <div class="q-main">    <div class="q-text">브루너의 성찰은 서사와 이야기하기를 인간 인지 이해의 핵심 요소로 다시 강조하게 한다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">7</div>  <div class="q-main">    <div class="q-text">전체적으로 이 글은 컴퓨터 모델의 힘은 인정하되 그것만으로는 부족하다고 본다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div></div>
+          </div>
+
+          <div class="quiz-section">
+            <div class="panel-label english">English Items 8–14</div>
+            <div class="q-list"><div class="q-item">  <div class="q-num">8</div>  <div class="q-main">    <div class="q-text">The passage suggests that viewing human cognition strictly through an internal, computational lens inevitably overlooks the essential role of external, socio-cultural factors.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">9</div>  <div class="q-main">    <div class="q-text">The discussion implies that cultural anthropology is useful only when it confirms the computer analogy.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">10</div>  <div class="q-main">    <div class="q-text">Bruner’s perspective reflects a shift away from seeing the mind as an information processor toward a more humanistic focus on how we construct meaning through narratives.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">11</div>  <div class="q-main">    <div class="q-text">The argument indicates that information processing and meaning construction are treated as identical in the passage.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">12</div>  <div class="q-main">    <div class="q-text">The passage redefines progress in cognitive theory as openness to perspectives beyond a single dominant metaphor.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">13</div>  <div class="q-main">    <div class="q-text">The final sentence suggests that computers remain valuable guides even though they are limited ones.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">14</div>  <div class="q-main">    <div class="q-text">The author asserts that combining behaviorism with the mind-as-computer metaphor provides a complete and flawless explanation of how human cognition works.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div></div>
+          </div>
+        </article>
+      </div>
+    </section>
+    
+
+    <section class="sheet">
+      <div class="sheet-header">
+        <div class="sheet-topline">
+          <span class="sheet-badge">43p</span>
+          <span class="sheet-page">5 / 7</span>
+        </div>
+        <h2>주제 · 다음 글의 주제로 가장 적절한 것은?</h2>
+        <p>페이지 43 · 26005-0030 · 주제</p>
+      </div>
+
+      <div class="sheet-grid">
+        <article class="passage-panel">
+          <div class="panel-label">Passage</div>
+          <div class="passage-text">In the escape that reading literature provides through vicarious identification and comparison with other lives, places, and times, we activate our imagination, that uniquely human ability to explore an alternative set of ideas and experiences that are outside our present environment and that may not even be real. As opposed to perception that receives and processes information from the outside world - light, sound, shape - and finds meaning in it - a sunset, a symphony, a house - in imagination, the process is reversed. Translating the words we read into what they signify, we populate an inner world in which imagery is created from the memory. For example, we read &#x27;house&#x27; and picture a representation of a house from memory. It is our imagination, the complex interweaving of perception and memory that literature activates, releasing a latent creativity that pleases. The writer may provide the blueprint, but the reader builds literature&#x27;s many rooms, and like any satisfying occupation, literature gratifies our imaginative and creative abilities.</div>
+
+          <div class="point-box">
+            <div class="point-title">출제 포인트</div>
+            <ul><li>한국어 절반은 perception vs imagination, memory의 역할, blueprint 비유를 중심으로 출제했다.</li><li>영어 문항은 &#x27;필수 요소의 배제(완전히 배제한다)&#x27;나 &#x27;주체/객체의 위계화(수직적 관계, 제한한다)&#x27; 같은 논리적 왜곡을 사용하여 수준을 높였다.</li></ul>
+          </div>
+        </article>
+
+        <article class="quiz-panel">
+          <div class="quiz-section">
+            <div class="panel-label">한국어 문항 1–7</div>
+            <div class="q-list"><div class="q-item">  <div class="q-num">1</div>  <div class="q-main">    <div class="q-text">글은 문학 읽기가 다른 삶과 장소, 시대에 대한 대리적 동일시를 통해 상상력을 활성화한다고 본다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">2</div>  <div class="q-main">    <div class="q-text">지각은 바깥 정보를 받아 의미를 만들고, 상상은 그 과정을 거꾸로 진행한다고 설명한다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">3</div>  <div class="q-main">    <div class="q-text">글에 따르면 상상은 외부 자극이 없으면 작동할 수 없기 때문에 기억과는 무관하다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">4</div>  <div class="q-main">    <div class="q-text">&quot;house&quot;라는 단어를 읽고 집의 표상을 떠올리는 예시는 기억이 상상에 관여함을 보여 준다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">5</div>  <div class="q-main">    <div class="q-text">문학은 작가의 설계도만 충실히 따라가야 하므로 독자의 창조적 역할은 크지 않다고 말한다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">6</div>  <div class="q-main">    <div class="q-text">글은 문학이 지각과 기억이 얽힌 상상력을 자극해 잠재된 창조성을 풀어 준다고 본다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">7</div>  <div class="q-main">    <div class="q-text">결국 문학의 만족감은 독자의 상상적·창조적 능력이 작동하는 데서 나온다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div></div>
+          </div>
+
+          <div class="quiz-section">
+            <div class="panel-label english">English Items 8–14</div>
+            <div class="q-list"><div class="q-item">  <div class="q-num">8</div>  <div class="q-main">    <div class="q-text">The text portrays reading literature not as a passive reception of external information, but as an active, internal process of combining memory and imagery.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">9</div>  <div class="q-main">    <div class="q-text">By contrasting perception and imagination, the author implies that getting immersed in literature completely excludes the use of the reader&#x27;s existing memories.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">10</div>  <div class="q-main">    <div class="q-text">The writer treats imagination as an inner act of meaning-making that transforms words into lived imagery.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">11</div>  <div class="q-main">    <div class="q-text">The passage characterizes the relationship between author and reader as strictly hierarchical, where the author&#x27;s design completely limits the reader&#x27;s creative freedom.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">12</div>  <div class="q-main">    <div class="q-text">The essay reflects a view of literature as a stimulus for creative participation rather than passive observation.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">13</div>  <div class="q-main">    <div class="q-text">The discussion suggests that pleasure in literature is tied to the activation of imaginative and creative capacities.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">14</div>  <div class="q-main">    <div class="q-text">The passage redefines imagination as a faculty limited to representing only what is already present in the environment.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div></div>
+          </div>
+        </article>
+      </div>
+    </section>
+    
+
+    <section class="sheet">
+      <div class="sheet-header">
+        <div class="sheet-topline">
+          <span class="sheet-badge">47p</span>
+          <span class="sheet-page">6 / 7</span>
+        </div>
+        <h2>제목 · 다음 글의 제목으로 가장 적절한 것은?</h2>
+        <p>페이지 47 · 26005-0033 · 제목</p>
+      </div>
+
+      <div class="sheet-grid">
+        <article class="passage-panel">
+          <div class="panel-label">Passage</div>
+          <div class="passage-text">In the old Soviet Union, a famous U.S. beverage company wanted to set up a bottling plant and distribution network. The prevailing ideology in the old Soviet Union at the time stressed the importance of the group over the individual and the need to develop industrial capacity at the expense of consumer goods. Soft drinks hardly seemed to fit the country&#x27;s ideological priorities. Indeed, one government official dismissed the product as a &quot;useless drink.&quot; Eventually, the two sides struck a deal, but not on the basis that the drink would quench the local population&#x27;s thirst. Instead, the U.S. negotiators justified the project on the grounds that it would contribute to the country&#x27;s industrial development. They restructured the project to include a heavy training component for local workers and managers, as well as a farm that would grow certain of the drink&#x27;s ingredients. In addition, the company promised to make efforts to persuade other American companies to consider investments in the country.</div>
+
+          <div class="point-box">
+            <div class="point-title">출제 포인트</div>
+            <ul><li>한국어 문항 중 Q3는 본문의 극단적 거부 반응(useless drink)과 180도 대비되는 오답 함정으로 난이도를 올렸다.</li><li>영어 문항은 &#x27;수사적 구조 조정(aligning)&#x27;, &#x27;목적의 종속성(secondary)&#x27;, &#x27;설득 방식의 왜곡(persistently highlighting)&#x27;을 통해 인과를 파악하는지 평가한다.</li></ul>
+          </div>
+        </article>
+
+        <article class="quiz-panel">
+          <div class="quiz-section">
+            <div class="panel-label">한국어 문항 1–7</div>
+            <div class="q-list"><div class="q-item">  <div class="q-num">1</div>  <div class="q-main">    <div class="q-text">미국의 한 음료 회사는 옛 소련에 병입 공장과 유통망을 세우려 했다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">2</div>  <div class="q-main">    <div class="q-text">당시 소련의 지배적 이념은 개인보다 집단과 산업 역량을 더 중시했다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">3</div>  <div class="q-main">    <div class="q-text">소련 정부 관리는 그 음료가 자국민의 갈증을 해소하는 데에는 유용하므로 수입할 가치가 있다고 보았다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">4</div>  <div class="q-main">    <div class="q-text">결국 합의는 그 음료가 갈증을 해소해 준다는 점보다 산업 발전에 기여한다는 논리 위에서 이루어졌다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">5</div>  <div class="q-main">    <div class="q-text">협상 과정에서 미국 측은 기존 제안을 거의 바꾸지 않고 원래 상품 가치만 계속 강조했다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">6</div>  <div class="q-main">    <div class="q-text">프로젝트에는 현지 인력 교육과 원료 재배 농장 같은 요소가 추가되었다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">7</div>  <div class="q-main">    <div class="q-text">이 사례는 상대가 중요하게 여기는 우선순위에 맞춰 제안을 재구성한 협상으로 볼 수 있다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div></div>
+          </div>
+
+          <div class="quiz-section">
+            <div class="panel-label english">English Items 8–14</div>
+            <div class="q-list"><div class="q-item">  <div class="q-num">8</div>  <div class="q-main">    <div class="q-text">The anecdote demonstrates that overcoming ideological barriers often requires aligning a project&#x27;s commercial goals with the host nation&#x27;s primary values.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">9</div>  <div class="q-main">    <div class="q-text">The Soviet side is portrayed as rejecting the project because it preferred consumer goods over industrial development.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">10</div>  <div class="q-main">    <div class="q-text">The final agreement shows that the product&#x27;s immediate consumer appeal was treated as secondary to the broader economic goals prioritized by the state.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">11</div>  <div class="q-main">    <div class="q-text">The U.S. negotiators successfully persuaded the Soviet officials by persistently highlighting the universal health benefits and immediate consumer appeal of their beverage.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">12</div>  <div class="q-main">    <div class="q-text">The added training and farming elements function as evidence that the proposal was adapted to local concerns.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">13</div>  <div class="q-main">    <div class="q-text">The case implies that persuasion in cross-system negotiations often requires attention to the partner&#x27;s institutional goals.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">14</div>  <div class="q-main">    <div class="q-text">The passage presents compromise as abandoning one&#x27;s project entirely instead of restructuring it.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div></div>
+          </div>
+        </article>
+      </div>
+    </section>
+    
+
+    <section class="sheet">
+      <div class="sheet-header">
+        <div class="sheet-topline">
+          <span class="sheet-badge">49p</span>
+          <span class="sheet-page">7 / 7</span>
+        </div>
+        <h2>제목 · 다음 글의 제목으로 가장 적절한 것은?</h2>
+        <p>페이지 49 · 26005-0035 · 제목</p>
+      </div>
+
+      <div class="sheet-grid">
+        <article class="passage-panel">
+          <div class="panel-label">Passage</div>
+          <div class="passage-text">Limited animation is a process of making animated cartoons that does not follow a &quot;realistic&quot; approach. The short cartoons and feature films of Walt Disney from the 1930s and 1940s are widely acclaimed for depicting animated simulations of reality, with exquisite detail in every frame. However, this style of animation is very time-consuming and expensive. &quot;Limited&quot; animation creates an image that uses abstract art, symbolism, and limited movement to create the same effect, but at a much lower production cost. This style of animation depends more upon suspension of disbelief to tell a story; the story exists more in the viewer&#x27;s imagination. It also encourages the animators to indulge in artistic styles that are not necessarily bound to the limits of the real world. The result is a new artistic style that could not have developed if animation was solely devoted to producing simulations of reality. Without limited animation, such ground-breaking films as Yellow Submarine, Chuck Jones&#x27; The Dot and the Line, and many others could never have been produced.</div>
+
+          <div class="point-box">
+            <div class="point-title">출제 포인트</div>
+            <ul><li>한국어 문항은 realism, cost, imagination, artistic style, example films를 추적하게 했다.</li><li>영어 문항은 혁신의 관점을 &#x27;제약의 긍정적 역설(paradoxically foster, catalyst)&#x27;로 추상화하고, &#x27;가치의 축소(exclusively, secondary)&#x27; 함정으로 논리적 허점을 파고들었다.</li></ul>
+          </div>
+        </article>
+
+        <article class="quiz-panel">
+          <div class="quiz-section">
+            <div class="panel-label">한국어 문항 1–7</div>
+            <div class="q-list"><div class="q-item">  <div class="q-num">1</div>  <div class="q-main">    <div class="q-text">리미티드 애니메이션은 사실주의적 접근을 그대로 따르지 않는 방식으로 소개된다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">2</div>  <div class="q-main">    <div class="q-text">디즈니식 사실적 애니메이션은 모든 프레임의 정교한 세부 묘사로 높이 평가된다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">3</div>  <div class="q-main">    <div class="q-text">글은 사실적 애니메이션이 시간과 비용이 거의 들지 않는다고 말한다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">4</div>  <div class="q-main">    <div class="q-text">리미티드 애니메이션은 더 낮은 제작비로 비슷한 효과를 만들어 낼 수 있다고 한다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">5</div>  <div class="q-main">    <div class="q-text">이 방식은 관객의 상상력보다 현실 재현의 정확성에 더 의존한다고 평가된다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">6</div>  <div class="q-main">    <div class="q-text">글은 리미티드 애니메이션이 현실의 한계에 꼭 묶이지 않은 예술 양식을 가능하게 한다고 본다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">7</div>  <div class="q-main">    <div class="q-text">마지막에는 이런 방식이 없었다면 혁신적인 몇몇 영화도 만들어지지 못했을 것이라고 말한다.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div></div>
+          </div>
+
+          <div class="quiz-section">
+            <div class="panel-label english">English Items 8–14</div>
+            <div class="q-list"><div class="q-item">  <div class="q-num">8</div>  <div class="q-main">    <div class="q-text">The text indicates that intentionally moving away from highly realistic representation can paradoxically foster new artistic styles that go beyond the limits of reality.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">9</div>  <div class="q-main">    <div class="q-text">The comparison with Disney implies that limited animation tries above all to reproduce reality with greater detail.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">10</div>  <div class="q-main">    <div class="q-text">The writer treats viewer imagination as a crucial partner in how limited animation tells its stories.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">11</div>  <div class="q-main">    <div class="q-text">The passage frames limited animation exclusively as a way to save money, suggesting that its artistic value is completely secondary to the goal of reducing production costs.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">12</div>  <div class="q-main">    <div class="q-text">The discussion reflects a tradeoff in which symbolic design and limited movement can still achieve strong narrative effects.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">13</div>  <div class="q-main">    <div class="q-text">The author implies that accepting certain formal limits, rather than pursuing perfect realistic detail, can act as a catalyst for narrative and artistic innovation.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div><div class="q-item">  <div class="q-num">14</div>  <div class="q-main">    <div class="q-text">The final examples suggest that groundbreaking animated films would have existed in the same way even without limited animation.</div>    <div class="tf-marks" aria-hidden="true">      <span class="tf-mark">T</span>      <span class="tf-mark">F</span>    </div>  </div></div></div>
+          </div>
+        </article>
+      </div>
+    </section>
+    
+  </main>
+</body>
+</html>
